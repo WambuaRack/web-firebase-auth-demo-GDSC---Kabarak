@@ -18,7 +18,7 @@ This demo showcases the basic integration of Firebase and Firebase Authenticatio
 
 3. **Project Structure:**
    - Create an `index.html` file for your HTML structure.
-   - Create a `styles.css` file for your CSS styles.
+   - Styling  done by `tailwind css` 
    - Create a `scripts.js` file for your JavaScript logic.
 
 ## Integration Steps

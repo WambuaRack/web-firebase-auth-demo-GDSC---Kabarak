@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <!-- Include the Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        .wrapper {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .btn {
+            background-color: #7289da;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-800 text-white font-sans">
+    <div class="wrapper">
+        <h1 class="text-2xl font-bold mb-4">Sign Up</h1>
+        <form onsubmit="signup(event)">
+            <div class="mb-4">
+                <input type="text" name="" placeholder="Full Name" id="fullname" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">  
+                <input type="text" name="" placeholder="Contact" id="contact" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">  
+                <input type="text" name="" placeholder="Address" id="address" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">
+                <input type="text" name="" placeholder="Email" id="email" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">
+                <input type="password" name="" placeholder="Password" id="password" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">
+                <input type="password" name="" placeholder="Confirm Password" id="copassword" class="p-2 w-full bg-gray-700 rounded">
+            </div>
+            <div class="mb-4">
+                <button id="signupinp" type="submit" class="btn">Sign Up</button>
+                <div class="text-sm mt-2">
+                    Already a member? <a href="/HTML/login.html" class="text-blue-300">Login Here!</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="/JAVASCRIPT/app.js" type="module"></script>
+</html>

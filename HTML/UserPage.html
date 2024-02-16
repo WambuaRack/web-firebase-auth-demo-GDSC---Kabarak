@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Include the Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include the Toastify CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <div class="container mx-auto p-4">
+        <div class="max-w-md mx-auto bg-gray-800 rounded-lg p-6">
+            <div class="flex justify-end">
+                <button class="btn" onclick="logout()">Logout</button>
+            </div>
+            <div class="main">
+                <h1 class="text-2xl font-bold mb-4">Hello <span id="user"></span> <span class="text">Warrup!</span></h1>
+            </div>
+            <div class="main">
+                <form id="todoForm">
+                    <div class="mb-4">
+                        <input type="text" id="Name" placeholder="Name" class="p-2 bg-gray-700 rounded">
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" id="Description" placeholder="Description" class="p-2 bg-gray-700 rounded">
+                    </div>
+                    <div class="mb-4">
+                        <select id="Status" class="p-2 bg-gray-700 rounded">
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-between">
+                        <input type="button" value="Add" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="addtodo()">
+                        <input type="button" value="Get data" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onclick="getdata()">
+                    </div>
+                </form>
+            </div>
+            <div id="main">
+                <ul id="parent"></ul>
+            </div>
+        </div>
+    </div>
+    <!-- Include the Toastify JS -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        let todos = [];
+
+        function addtodo() {
+            const name = document.getElementById("Name").value;
+            const description = document.getElementById("Description").value;
+            const status = document.getElementById("Status").value;
+            todos.push({ Name: name, Description: description, Status: status });
+            document.getElementById("todoForm").reset();
+            
+            // Show a success toast
+            Toastify({
+                text: "Todo added successfully",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        }
+
+        function getdata() {
+            const parent = document.getElementById("parent");
+            parent.innerHTML = "";
+
+            todos.forEach((item, index) => {
+                const cardColorClasses = ["bg-blue-500", "bg-green-500", "bg-yellow-500"];
+                const randomColorClass = cardColorClasses[index % cardColorClasses.length];
+                const card = document.createElement("li");
+                card.className = `p-4 rounded ${randomColorClass} mb-4`;
+                card.innerHTML = `
+                    <p>Name: ${item.Name}</p>
+                    <p>Description: ${item.Description}</p>
+                    <p>Status: ${item.Status}</p>
+                `;
+                parent.appendChild(card);
+            });
+
+            // Show a success toast
+            Toastify({
+                text: "Data fetched successfully",
+                backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+            }).showToast();
+        }
+
+        function logout() {
+            // Add your logout logic here
+            // For now, just reset the todos array
+            todos = [];
+            document.getElementById("parent").innerHTML = "";
+
+            // Redirect to the login route
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
